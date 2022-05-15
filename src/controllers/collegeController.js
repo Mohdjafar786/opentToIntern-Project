@@ -79,7 +79,7 @@ const getCollege = async function (req, res) {
       let { _id, name, fullName, logoLink } = collegeDetail//initialise
 
       let allInterns = await internModel.find({ collegeId: _id, isDeleted: false }).select({ name: 1, email: 1, mobile: 1 })
-     //if (allInterns.length === 0) return res.status(400).send({ status: false, msg: "no intern applied for this college" })
+     if (allInterns.length === 0) return res.status(400).send({ status: false, msg: "no intern applied for this college" })
 
       let College = { name:name, fullName:fullName, logoLink:logoLink, intrest: allInterns }
     

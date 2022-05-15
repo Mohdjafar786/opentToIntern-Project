@@ -39,6 +39,13 @@ const createIntern = async function (req, res) {
 
     }
 
+     // email is required
+     const req12 = isValid(data.collegeName)
+     if (!req12) {
+       return res.status(400).send({ status: false, msg: " college is required" })
+ 
+     }
+
     
     //to validate email
     const email=data.email.trim()

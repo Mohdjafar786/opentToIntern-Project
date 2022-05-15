@@ -24,14 +24,6 @@ const createIntern = async function (req, res) {
       return res.status(400).send({ status: false, msg: " name is required" })
 
     }
-
-    //duplicate Name
-    const name=data.name.trim()
-    const duplicateName = await internModel.findOne({ name: name })
-    if (duplicateName) {
-      return res.status(400).send({ status: false, msg: 'This name is already registered.' })
-    }
-
     // email is required
     const req1 = isValid(data.email)
     if (!req1) {
